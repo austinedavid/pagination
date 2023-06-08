@@ -7,7 +7,7 @@ import Logoutbtn from '@/components/Logoutbtn'
 const Dashboard = async() => {
     const session = await getServerSession(authOptions);
     if(!session?.user) return redirect('/login')
-    console.log(session.user.image)
+    console.log(session.user)
   return (
     <div>
         <p>name: {session?.user?.name}</p>

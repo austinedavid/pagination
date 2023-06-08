@@ -11,7 +11,14 @@ const Login = () => {
     // here, we will redirect the user back to the dashboard if they are registered
     if(status === "authenticated") return router.push('/dashboard')
     // here, we will handle form submission
-    const handleFormSubmit = ()=>{
+    const handleFormSubmit = (e)=>{
+        e.preventDefault()
+        // here, we get the input values
+        const email = e.target[0].value;
+        const password = e.target[1].value;
+
+        // here, we will pass the input to the backend for verifications
+        signIn("credentials", {email, password})
 
     }
   return (
@@ -26,7 +33,7 @@ const Login = () => {
         <hr className={styles.line}/>
         <div>
             <button className={styles.google} onClick={()=>signIn("google")}>login with google</button>
-            <p className={styles.small}>I already have an account <Link href="/register">signin</Link></p>
+            <p className={styles.small}>I already have an account <Link href="/register">register</Link></p>
         </div>
         </div>
     </div>

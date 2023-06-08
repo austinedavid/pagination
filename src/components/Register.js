@@ -35,7 +35,7 @@ const Register = () => {
         const password = e.target[2].value;
         const image = e.target[3].value;
         // convert is to one object
-        const allValues = {name,email,password}
+        const allValues = {name,email,password,image}
 
         // here, we make use of react query to register the user
         mutation.mutate(allValues)
