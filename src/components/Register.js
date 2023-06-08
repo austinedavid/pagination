@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React,{useState} from 'react'
 import {useMutation} from "@tanstack/react-query";
 import { signIn, useSession } from 'next-auth/react';
 import styles from "./register.module.css"
@@ -19,11 +19,13 @@ const regUsers = async(formData)=>{
 const Register = () => {
     const router = useRouter()
     const {data:session} = useSession()
+    const[loading, setloading] = useState(false)
     console.log(session)
     // here, we handle our userMutation functions
     const mutation = useMutation({mutationFn: (allValues)=>regUsers(allValues),
     onSuccess: async()=> router.push('/login'),
-    onError: async()=> alert("check your details and try again...")
+    onError: async()=> alert("check your details and try again..."),
+    onMutate: async()=> setloading(true)
     })
     // here, er handle form submit
     const handleFormSubmit = (e)=>{
@@ -48,7 +50,7 @@ const Register = () => {
             <input placeholder='enter email'/>
             <input placeholder='enter password'/>
             <input placeholder='enter image'/>
-            <button className={styles.regBtn}>submit application</button>
+            {loading? <button className={styles.regBtn}>submitting...</button>:<button className={styles.regBtn}>submit application</button>}
         </form>
         <hr className={styles.line}/>
         <div>
