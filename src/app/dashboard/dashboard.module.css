@@ -3,3 +3,8 @@
     padding: 20px;
     display: flex;
 }
+@media(max-width:600px){
+    .posts{
+        flex-direction: column;
+    }
+}
