@@ -1,0 +1,22 @@
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: purple;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.mainCon{
+    width: 100%;
+    height: 70px;
+    background-color: purple;
+}
+.logo{
+    color: white;
+}
