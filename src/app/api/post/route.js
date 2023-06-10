@@ -35,7 +35,7 @@ export async function GET(req){
     // if(!token) return new Response(JSON.stringify({message: "you are not authorized to get this post"}), {status:401})
     // then if the user is authenticated, then run the following code
     try {
-        const usersPost = (await postModel.find({creator:token.sub})).reverse()
+        const usersPost = await postModel.find({creator:token.sub}).reverse()
         return new Response(JSON.stringify(usersPost), {status:200, statusText:"successfully fetched"})
 
     } catch (error) {
