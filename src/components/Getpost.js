@@ -5,7 +5,7 @@ import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query"
 
 // here, we run the function that gets all the post
 const getposts = async()=>{
-    const response = await fetch("/api/post",{cache: "no-store"});
+    const response = await fetch("/api/post");
     const res = await response.json();
     return res
 }
