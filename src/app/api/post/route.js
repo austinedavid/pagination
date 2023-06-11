@@ -29,13 +29,13 @@ export async function POST(req){
 // and only the authenticated users can fetch their post.
 // and only their post will be returned to them.
 export async function GET(req){
-    const token = await getToken({req, secret: process.env.NEXTAUTH_SECRET})
+    // const token = await getToken({req, secret: process.env.NEXTAUTH_SECRET})
     // connecting to ourdb
     await connectdb()
     // if(!token) return new Response(JSON.stringify({message: "you are not authorized to get this post"}), {status:401})
     // then if the user is authenticated, then run the following code
     try {
-        const usersPost = (await postModel.find({creator:token.sub})).sort((a,b)=>b.createdAt - a.createdAt)
+        const usersPost = (await postModel.find()).sort((a,b)=>b.createdAt - a.createdAt)
         return new Response(JSON.stringify(usersPost), {status:200, statusText:"successfully fetched"})
 
     } catch (error) {
