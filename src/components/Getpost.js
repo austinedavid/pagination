@@ -38,7 +38,8 @@ const Getpost = () => {
     }
     // if it is loading return 
     if(isLoading)return <div className={styles.container}>loading...</div>
-    if(data?.length < 0 ) return <div className={styles.container}>your posts will appear here</div>
+    if(data?.length == 0 ) return <div className={styles.container}>your posts will appear here</div>
+    
   return (
     <div className={styles.container}>
         {data?.map((post)=>(
